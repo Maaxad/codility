@@ -1,18 +1,11 @@
-def solution(N):
-    import string
-    alphabet = string.ascii_lowercase 
-    # Determine the maximum number of unique letters we can use
-    k = min(26, N)
+def solution(A, F, M):
+    N = len(A)
+    target_sum = M * (N + F)
+    current_sum = sum(A)
     
-    # Calculate how many times each letter will appear
-    q = N // k
-    r = N % k
+    for roll1 in range(1, 7):
+        for roll2 in range(1, 7):
+            if current_sum + roll1 + roll2 == target_sum:
+                return [roll1, roll2]
     
-   
-    result = (alphabet[:k] * q) + alphabet[:r]
-    
-    return result
-
-print(solution(3))   
-print(solution(5))  
-print(solution(30))  
+    return [0]
